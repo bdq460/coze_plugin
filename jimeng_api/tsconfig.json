@@ -1,0 +1,41 @@
+// tsconfig.json 文件的存在标识了当前目录为 TypeScript 项目的根目录
+// 当 TypeScript 编译器（tsc）在目录中找到该文件时，就知道这是项目的起点
+{
+  "compilerOptions": {
+    "target": "ES2020", // 编译目标为 ES2020
+    "module": "commonjs", //使用 CommonJS 模块系统
+    "lib": [
+      "ES2020" //包含 ES2020 的库定义
+    ],
+    "allowJs": true, //允许编译 JavaScript 文件
+    "outDir": "./dist", //编译输出目录
+    "rootDir": "./", //源代码根目录
+    "strict": true, //启用所有严格类型检查选项
+    "noImplicitAny": true, //不允许隐式的 any 类型
+    "esModuleInterop": true, //启用 ES 模块互操作性
+    "resolveJsonModule": true, //允许导入 JSON 模块
+    "skipLibCheck": true, //跳过声明文件的类型检查
+    "forceConsistentCasingInFileNames": true, //强制文件名大小写一致
+    "baseUrl": ".", //设置基础路径
+    "paths": { //路径映射, 用于简化模块导入
+      "@/*": [ //支持 "@/..." 导入方式, 这样使用import @/xxx.ts的时候, 就会在@/*定义的路径数组中查找对应的文件,而不需要写相对路径
+        "./*"
+      ]
+    },
+    "typeRoots": [ //指定类型定义文件的根目录
+      "./node_modules/@types",
+      "./typings"
+    ],
+    "types": [ //包含 Node.js 的类型定义
+      "node"
+    ]
+  },
+  "include": [ // 包含所有 ts 和 js 文件
+    "**/*.ts",
+    "**/*.js"
+  ],
+  "exclude": [ //排除 node_modules 和 dist 目录
+    "node_modules",
+    "dist"
+  ]
+}
